@@ -1,0 +1,2276 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>청춘양구 문화관광 | Yanggu Tourism</title>
+    <meta name="description" content="자연이 숨쉬는 곳, 강원도 양구군의 아름다운 관광지, 축제, 먹거리를 소개합니다.">
+    <style>
+/* Base Variables & Reset */
+:root {
+    --primary-color: #2e7d32;
+    --primary-light: #60ad5e;
+    --primary-dark: #005005;
+    --accent-color: #fbc02d;
+    --text-dark: #333333;
+    --text-light: #666666;
+    --bg-white: #ffffff;
+    --bg-light: #f8f9fa;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 100px 0;
+    scroll-snap-align: start;
+}
+
+.hero {
+    scroll-snap-align: start;
+}
+
+footer {
+    scroll-snap-align: end;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.section-title h2 span {
+    color: var(--primary-color);
+}
+
+.section-title p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+/* Header (Glassmorphism) */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: var(--transition);
+}
+
+#header.scrolled {
+    padding: 15px 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    transition: var(--transition);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+#header.scrolled .logo a {
+    color: var(--primary-color);
+    text-shadow: none;
+}
+
+.logo span {
+    color: var(--accent-color);
+}
+
+#header.scrolled .logo span {
+    color: var(--primary-color);
+}
+
+.nav-menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-menu a {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    transition: var(--transition);
+    position: relative;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+#header.scrolled .nav-menu a {
+    color: var(--text-dark);
+    text-shadow: none;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: var(--transition);
+}
+
+#header.scrolled .nav-menu a::after {
+    background-color: var(--primary-color);
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+#header.scrolled .mobile-menu-btn {
+    color: var(--text-dark);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/hanbando_full.png') no-repeat center center/cover;
+    z-index: -1;
+    transform: scale(1.05);
+    animation: zoomBg 20s infinite alternate linear;
+}
+
+@keyframes zoomBg {
+    from { transform: scale(1.05); }
+    to { transform: scale(1.15); }
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    line-height: 1.2;
+}
+
+.hero-content h1 span {
+    color: var(--accent-color);
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 16px 36px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: var(--transition);
+    box-shadow: 0 10px 20px rgba(46, 125, 50, 0.3);
+    border: 2px solid var(--primary-color);
+}
+
+.cta-btn i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: transparent;
+    color: #fff;
+    border-color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cta-btn:hover i {
+    transform: translateX(5px);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    opacity: 0.8;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+    40% { transform: translateY(-15px) translateX(-50%); }
+    60% { transform: translateY(-7px) translateX(-50%); }
+}
+
+/* Video Section */
+.video-section {
+    background-color: var(--text-dark);
+    color: #fff;
+}
+
+.video-section .section-title h2,
+.video-section .section-title p {
+    color: #fff;
+}
+
+.video-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    aspect-ratio: 16 / 9;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* About Section */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.about-item {
+    text-align: center;
+    padding: 40px 30px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.about-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-color: var(--primary-light);
+}
+
+.about-item .icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+    color: #fff;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    box-shadow: 0 10px 20px rgba(46, 125, 50, 0.2);
+}
+
+.about-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.about-item p {
+    color: var(--text-light);
+}
+
+/* Destinations Section */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+}
+
+.card-img {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.card:hover .card-img img {
+    transform: scale(1.1);
+}
+
+.card-img .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.card:hover .card-img .overlay {
+    opacity: 1;
+}
+
+.view-btn {
+    padding: 10px 25px;
+    background: #fff;
+    color: var(--text-dark);
+    border-radius: 30px;
+    font-weight: 600;
+    transform: translateY(20px);
+    transition: var(--transition);
+}
+
+.card:hover .view-btn {
+    transform: translateY(0);
+}
+
+.view-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.card-content {
+    padding: 30px;
+}
+
+.card-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tags span {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    background: rgba(46, 125, 50, 0.1);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* Toggle Styles */
+.toggle-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.toggle-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 10px 20px rgba(46, 125, 50, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toggle-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(46, 125, 50, 0.3);
+}
+
+.toggle-btn i {
+    transition: transform 0.3s ease;
+}
+
+.toggle-btn.active i {
+    transform: rotate(180deg);
+}
+
+.toggle-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease, margin-top 0.5s ease;
+    opacity: 0;
+    margin-top: 0;
+}
+
+.toggle-content.open {
+    max-height: 3000px;
+    opacity: 1;
+    margin-top: 30px;
+}
+
+/* Info Grid (Side-by-Side Layout) */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+@media (max-width: 992px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+}
+
+/* Map Section */
+.map-container-inner {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+.map-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+.map-img:hover {
+    transform: scale(1.02);
+}
+
+/* Food Section Table */
+.table-responsive {
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    margin: 0 auto;
+}
+
+.food-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.food-table th, .food-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.food-table th {
+    background-color: var(--primary-light);
+    color: #fff;
+    font-weight: 600;
+}
+
+.food-table tr:last-child td {
+    border-bottom: none;
+}
+
+.food-table tr:hover td {
+    background-color: #f9f9f9;
+}
+
+/* Location Section */
+.location-section {
+    background-color: #fff;
+    border-top: 1px solid #eee;
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+.location-map {
+    width: 100%;
+    height: 100%;
+}
+
+.location-map iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.location-info {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.location-info .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.location-info .icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(46, 125, 50, 0.1);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.location-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+.location-info p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+    .location-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .location-map iframe {
+        min-height: 300px;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-dark);
+    color: #fff;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-logo h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.footer-logo h3 span {
+    color: var(--primary-light);
+}
+
+.footer-logo p {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.footer-links ul {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+.footer-contact {
+    text-align: right;
+}
+
+.footer-contact p {
+    color: #ccc;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.footer-contact i {
+    margin-right: 8px;
+    color: var(--primary-light);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #888;
+    font-size: 0.85rem;
+}
+
+/* Animations - Intersection Observer classes */
+.opacity-0 { opacity: 0; }
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+.fade-in.appear {
+    opacity: 1;
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in-up.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.slide-in-left.appear {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.slide-in-right.appear {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-bottom {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.slide-in-bottom.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-content h1 { font-size: 3rem; }
+    .about-grid, .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-content { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+    .footer-contact { text-align: center; }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        display: none;
+    }
+    
+    .nav-menu.active {
+        display: block;
+    }
+    
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .nav-menu a {
+        color: var(--text-dark);
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-content p { font-size: 1.1rem; }
+    
+    .about-grid, .cards-grid { grid-template-columns: 1fr; }
+    .footer-links ul { flex-direction: column; align-items: center; gap: 10px; }
+}
+
+/* Chatbot Widget */
+.chatbot-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    font-family: 'Pretendard', sans-serif;
+}
+
+.chat-launcher {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.speech-bubble {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 20px 20px 0 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+    margin-bottom: 10px;
+    animation: bounce 2s infinite ease-in-out;
+    white-space: nowrap;
+}
+
+.mascot-avatar {
+    width: 90px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+}
+
+.mascot-avatar img {
+    width: 100%;
+    height: auto;
+    animation: wave-character 3s infinite ease-in-out;
+    transform-origin: bottom center;
+}
+
+.chat-launcher:hover .mascot-avatar {
+    transform: scale(1.15);
+}
+
+@keyframes wave-character {
+    0%, 100% { transform: rotate(0deg); }
+    10% { transform: rotate(8deg); }
+    20% { transform: rotate(-6deg); }
+    30% { transform: rotate(4deg); }
+    40% { transform: rotate(-2deg); }
+    50% { transform: rotate(0deg); }
+}
+
+.chat-window {
+    position: absolute;
+    bottom: 90px;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.chat-window.active {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.chat-header {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chat-header-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    padding: 2px;
+}
+
+.chat-header-info h4 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.chat-header-info p {
+    font-size: 0.8rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.close-chat {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.close-chat:hover {
+    transform: scale(1.1) rotate(90deg);
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #f8f9fa;
+}
+
+.message {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    animation: fadeIn 0.3s ease;
+}
+
+.message.bot {
+    background: #fff;
+    color: var(--text-dark);
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.message.user {
+    background: var(--primary-color);
+    color: #fff;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 2px 5px rgba(46, 125, 50, 0.2);
+}
+
+.chat-options {
+    padding: 15px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chat-option-btn {
+    background: #f0fdf4;
+    border: 1px solid var(--primary-light);
+    color: var(--primary-dark);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chat-option-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .chatbot-widget {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .chat-window {
+        width: 320px;
+        height: 450px;
+        bottom: 80px;
+    }
+}
+
+/* Header Widgets (Weather & Translate) */
+.header-widgets {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.weather-widget {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+}
+
+.weather-widget i {
+    color: var(--accent-color);
+}
+
+/* Google Translate Override */
+.goog-te-gadget {
+    font-family: 'Pretendard', sans-serif !important;
+    font-size: 0;
+}
+.goog-te-gadget .goog-te-combo {
+    padding: 5px;
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    font-family: 'Pretendard', sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+    color: var(--text-dark);
+}
+.goog-logo-link {
+    display: none !important;
+}
+.goog-te-gadget {
+    color: transparent !important;
+}
+
+/* Festival Banner */
+.festival-banner {
+    background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 99;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0 auto;
+}
+
+.banner-content .badge {
+    background: #e91e63;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.banner-content p {
+    margin: 0;
+    color: #880e4f;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.banner-link {
+    color: #d81b60;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.banner-link:hover {
+    text-decoration: underline;
+}
+
+.close-banner {
+    background: transparent;
+    border: none;
+    color: #880e4f;
+    font-size: 1.2rem;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+}
+
+/* Course Timeline */
+.course-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.course-track {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.course-title {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background: #e0e0e0;
+}
+
+.time-item {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.time-item:last-child {
+    margin-bottom: 0;
+}
+
+.time-dot {
+    position: absolute;
+    left: -30px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 0 4px #fff;
+}
+
+.time-content h4 {
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.time-content p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 992px) {
+    .header-widgets {
+        display: none;
+    }
+    .banner-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    .close-banner {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+/* Fortune Cookie */
+.fortune-cookie {
+    position: fixed;
+    width: 65px;
+    height: 65px;
+    bottom: -100px;
+    left: 30px;
+    z-index: 999;
+    cursor: pointer;
+    transition: bottom 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: float-cookie 3s ease-in-out infinite;
+    filter: drop-shadow(0 5px 15px rgba(251, 192, 45, 0.4));
+}
+
+.fortune-cookie.show {
+    bottom: 30px;
+}
+
+.fortune-cookie img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes float-cookie {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(8deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Fortune Modal */
+.fortune-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.5); 
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+}
+
+.fortune-modal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.fortune-content {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    border: 2px solid var(--accent-color);
+    background-image: linear-gradient(135deg, #fff 0%, #fffdf0 100%);
+}
+
+.fortune-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.fortune-content p {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.close-fortune {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-fortune:hover {
+    color: #333;
+}
+
+</style>
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header (Glassmorphism) -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="#">🌿 청춘<span>양구</span></a>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home">홈</a></li>
+                    <li><a href="#about">양구소개</a></li>
+                    <li><a href="#destinations">추천명소</a></li>
+                    <li><a href="#accommodations">숙박안내</a></li>
+                    <li><a href="#courses">추천코스</a></li>
+                    <li><a href="#festivals">축제/행사</a></li>
+                </ul>
+            </nav>
+            <div class="header-widgets">
+                <div id="weather-widget" class="weather-widget" title="양구 실시간 날씨">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+                <div id="google_translate_element"></div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content fade-in">
+            <h1>자연이 숨쉬는 곳, <br><span>양구로 떠나는 여행</span></h1>
+            <p>한반도의 정중앙, 때묻지 않은 자연과 평화의 숨결을 느껴보세요.</p>
+            <a href="#destinations" class="cta-btn">관광명소 둘러보기 <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>한반도의 배꼽, <span>양구</span></h2>
+                <p>국토의 정중앙에 위치한 양구는 맑은 공기와 아름다운 자연경관을 자랑합니다.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-item slide-in-left">
+                    <div class="icon"><i class="fas fa-leaf"></i></div>
+                    <h3>청정 자연</h3>
+                    <p>DMZ와 인접해 있어 오염되지 않은 원시 자연의 모습을 그대로 간직하고 있습니다.</p>
+                </div>
+                <div class="about-item slide-in-bottom">
+                    <div class="icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <h3>국토 정중앙</h3>
+                    <p>한반도 4극 지점을 기준으로 한 국토의 정중앙에 위치하여 상징적인 의미가 깊습니다.</p>
+                </div>
+                <div class="about-item slide-in-right">
+                    <div class="icon"><i class="fas fa-heart"></i></div>
+                    <h3>청춘 양구</h3>
+                    <p>젊음과 활기가 넘치는 양구에서 일상의 스트레스를 날려버리고 힐링하세요.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations" class="destinations section-padding bg-light">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>양구 <span>추천 명소</span></h2>
+                <p>양구에서 꼭 가봐야 할 아름다운 명소들을 소개합니다.</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="card fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="card-img">
+                        <img src="images/dutaeyeon.png" alt="두타연">
+                        <div class="overlay">
+                            <a href="#" class="view-btn">자세히 보기</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>두타연</h3>
+                        <p>휴전선 너머에서 발원한 수입천 지류의 맑은 물이 빚어낸 천혜의 비경입니다.</p>
+                        <div class="tags">
+                            <span>#자연</span>
+                            <span>#계곡</span>
+                            <span>#힐링</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="card-img">
+                        <img src="images/punchbowl.png" alt="펀치볼">
+                        <div class="overlay">
+                            <a href="#" class="view-btn">자세히 보기</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>해안분지 (펀치볼)</h3>
+                        <p>화채그릇처럼 생겼다 하여 펀치볼이라 불리는 독특한 지형의 해안분지입니다.</p>
+                        <div class="tags">
+                            <span>#전망</span>
+                            <span>#지질공원</span>
+                            <span>#둘레길</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="card-img">
+                        <img src="images/hanbando.png" alt="한반도섬">
+                        <div class="overlay">
+                            <a href="#" class="view-btn">자세히 보기</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>한반도섬</h3>
+                        <p>파로호 상류에 국내 최대 규모로 조성된 한반도 모양의 아름다운 인공섬입니다.</p>
+                        <div class="tags">
+                            <span>#산책</span>
+                            <span>#호수</span>
+                            <span>#포토존</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodations Section -->
+    <section id="accommodations" class="destinations section-padding">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>양구 <span>숙박 안내</span></h2>
+                <p>편안한 휴식을 제공하는 양구의 다양한 숙박시설을 소개합니다.</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="card fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="card-img">
+                        <img src="images/hotel.png" alt="호텔">
+                        <div class="overlay">
+                            <a href="#" class="view-btn">예약하기</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>KCP 호텔</h3>
+                        <p>양구 시내 중심에 위치하여 이동이 편리하고 고급스러운 서비스와 객실을 제공합니다.</p>
+                        <div class="tags">
+                            <span>#호텔</span>
+                            <span>#도심접근성</span>
+                            <span>#조식제공</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="card-img">
+                        <img src="images/pension.png" alt="펜션">
+                        <div class="overlay">
+                            <a href="#" class="view-btn">예약하기</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>자연의품 펜션</h3>
+                        <p>푸른 계곡과 산으로 둘러싸여 맑은 공기를 마시며 가족과 바비큐 파티를 즐길 수 있습니다.</p>
+                        <div class="tags">
+                            <span>#계곡</span>
+                            <span>#바비큐</span>
+                            <span>#가족여행</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="card-img">
+                        <img src="images/camping.png" alt="캠핑장">
+                        <div class="overlay">
+                            <a href="#" class="view-btn">예약하기</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>팔랑폭포 캠핑장</h3>
+                        <p>쏟아지는 은하수와 맑은 계곡물이 흐르는 곳에서 자연과 함께하는 낭만적인 글램핑.</p>
+                        <div class="tags">
+                            <span>#글램핑</span>
+                            <span>#캠핑</span>
+                            <span>#별자리</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses-section section-padding bg-light">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>테마별 <span>추천 코스</span></h2>
+                <p>일정과 취향에 따라 양구를 알차게 즐길 수 있는 코스를 제안합니다.</p>
+            </div>
+
+            <div class="course-timeline fade-in-up">
+                <!-- Course 1 -->
+                <div class="course-track">
+                    <h3 class="course-title"><i class="fas fa-sun"></i> 당일치기 힐링 코스</h3>
+                    <div class="timeline">
+                        <div class="time-item">
+                            <div class="time-dot"></div>
+                            <div class="time-content">
+                                <h4>10:00 - 한반도섬</h4>
+                                <p>상쾌한 아침 공기를 마시며 짚라인과 산책 즐기기</p>
+                            </div>
+                        </div>
+                        <div class="time-item">
+                            <div class="time-dot"></div>
+                            <div class="time-content">
+                                <h4>12:30 - 점심 식사 (막국수)</h4>
+                                <p>양구 시내 모범음식점에서 시원한 막국수 한 그릇</p>
+                            </div>
+                        </div>
+                        <div class="time-item">
+                            <div class="time-dot"></div>
+                            <div class="time-content">
+                                <h4>14:00 - 두타연</h4>
+                                <p>민통선 내 원시 자연의 계곡길 걷기 (사전 출입신청 필수)</p>
+                            </div>
+                        </div>
+                        <div class="time-item">
+                            <div class="time-dot"></div>
+                            <div class="time-content">
+                                <h4>17:00 - 양구명품관</h4>
+                                <p>양구 시래기, 사과 등 지역 특산물 쇼핑 및 귀가</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-track">
+                    <h3 class="course-title"><i class="fas fa-campground"></i> 가족 1박 2일 생태 코스</h3>
+                    <div class="timeline">
+                        <div class="time-item">
+                            <div class="time-dot"></div>
+                            <div class="time-content">
+                                <h4>1일차 오후 - 박수근미술관</h4>
+                                <p>한국의 밀레, 박수근 화백의 정취를 느낄 수 있는 미술관 관람</p>
+                            </div>
+                        </div>
+                        <div class="time-item">
+                            <div class="time-dot"></div>
+                            <div class="time-content">
+                                <h4>1일차 저녁 - 국토정중앙천문대</h4>
+                                <p>우리나라 중심에서 별자리를 관측하며 낭만적인 밤 보내기</p>
+                            </div>
+                        </div>
+                        <div class="time-item">
+                            <div class="time-dot"></div>
+                            <div class="time-content">
+                                <h4>2일차 오전 - 해안분지 (펀치볼)</h4>
+                                <p>해발 400m 이상의 고지대에 형성된 펀치볼 모양의 장관 감상</p>
+                            </div>
+                        </div>
+                        <div class="time-item">
+                            <div class="time-dot"></div>
+                            <div class="time-content">
+                                <h4>2일차 오후 - 양구수목원</h4>
+                                <p>희귀 식물과 야생화가 가득한 수목원에서 피톤치드 힐링</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section (Food & Map Side-by-Side) -->
+    <section id="info" class="info-section section-padding">
+        <div class="container">
+            <div class="info-grid">
+
+                <!-- Food Column -->
+                <div class="info-column">
+                    <div class="section-title fade-in-up">
+                        <h2>양구 <span>모범음식점</span></h2>
+                        <p>양구군 추천 안심 맛집</p>
+                    </div>
+                    <div class="toggle-container fade-in-up" style="animation-delay: 0.2s;">
+                        <button class="toggle-btn" onclick="toggleSection('food-content', this)">
+                            모범음식점 18곳 보기 <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="food-content" class="toggle-content">
+                            <div class="table-responsive">
+                                <table class="food-table">
+                                    <thead>
+                                        <tr>
+                                            <th>번호</th>
+                                            <th>업소명</th>
+                                            <th>전화번호</th>
+                                            <th>주메뉴</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>감람원</td>
+                                            <td>033-481-6788</td>
+                                            <td>삼계탕</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>광치막국수</td>
+                                            <td>033-481-4095</td>
+                                            <td>막국수</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>꽃보다 소 양구점</td>
+                                            <td>033-482-3175</td>
+                                            <td>숯불구이</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>도촌삼계탕</td>
+                                            <td>033-482-1002</td>
+                                            <td>삼계탕</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>도촌막국수식당</td>
+                                            <td>033-481-4627</td>
+                                            <td>막국수</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>돈 갈비</td>
+                                            <td>033-482-9289</td>
+                                            <td>숯불구이</td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>모범떡볶이</td>
+                                            <td>033-481-9827</td>
+                                            <td>떡볶이</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>비비큐·우쿠야</td>
+                                            <td>033-481-1318</td>
+                                            <td>치킨, 돈까스</td>
+                                        </tr>
+                                        <tr>
+                                            <td>9</td>
+                                            <td>샤브향</td>
+                                            <td>033-482-5633</td>
+                                            <td>고기류 샤브</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>소나무함흥냉면막국수</td>
+                                            <td>033-482-5234</td>
+                                            <td>냉면</td>
+                                        </tr>
+                                        <tr>
+                                            <td>11</td>
+                                            <td>시래정</td>
+                                            <td>033-481-6616</td>
+                                            <td>시래기정식</td>
+                                        </tr>
+                                        <tr>
+                                            <td>12</td>
+                                            <td>양구수산횟집</td>
+                                            <td>033-481-2643</td>
+                                            <td>민물회,매운탕</td>
+                                        </tr>
+                                        <tr>
+                                            <td>13</td>
+                                            <td>오래드림고원</td>
+                                            <td>033-481-9224</td>
+                                            <td>식육</td>
+                                        </tr>
+                                        <tr>
+                                            <td>14</td>
+                                            <td>이가돈가</td>
+                                            <td>033-481-1400</td>
+                                            <td>숯불구이</td>
+                                        </tr>
+                                        <tr>
+                                            <td>15</td>
+                                            <td>장수오골계</td>
+                                            <td>033-481-8175</td>
+                                            <td>오골계구이, 탕류</td>
+                                        </tr>
+                                        <tr>
+                                            <td>16</td>
+                                            <td>청참치</td>
+                                            <td>033-481-7233</td>
+                                            <td>참치회, 바다회</td>
+                                        </tr>
+                                        <tr>
+                                            <td>17</td>
+                                            <td>최가네</td>
+                                            <td>033-481-3338</td>
+                                            <td>숯불구이</td>
+                                        </tr>
+                                        <tr>
+                                            <td>18</td>
+                                            <td>회마을</td>
+                                            <td>033-481-5939</td>
+                                            <td>바다회, 매운탕</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Column -->
+                <div class="info-column">
+                    <div class="section-title fade-in-up">
+                        <h2>양구 <span>관광안내도</span></h2>
+                        <p>다양한 명소로 가는 길 안내</p>
+                    </div>
+                    <div class="toggle-container fade-in-up" style="animation-delay: 0.2s;">
+                        <button class="toggle-btn" onclick="toggleSection('map-content', this)">
+                            관광지도 보기 <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="map-content" class="toggle-content">
+                            <div class="map-container-inner">
+                                <img src="map_new.png" alt="양구군 관광지도" class="map-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location-section section-padding">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>양구 <span>찾아오시는 길</span></h2>
+                <p>자연이 숨쉬는 양구군으로 오시는 다양한 방법을 안내해 드립니다.</p>
+            </div>
+
+            <div class="location-grid fade-in-up" style="animation-delay: 0.2s;">
+                <div class="location-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3143.5134710186985!2d127.9868434!3d38.1066509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3562a1c0d0a5e8e1%3A0x6b8f3a3f5f3e0b0!2z6rCV7JuQ7Yq567OE7J6Q7LmY64-EIOyWkey1rOq1sCDslpHqtaDsnaUg6rSA6rO17ISc66GcIDM4!5e0!3m2!1sko!2skr!4v1700000000000!5m2!1sko!2skr"
+                        width="100%" height="100%" style="border:0; min-height: 400px;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="location-info">
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-bus"></i></div>
+                        <div>
+                            <h3>시외버스 이용</h3>
+                            <p><strong>동서울터미널 ↔ 양구시외버스터미널</strong><br>소요시간: 약 1시간 50분 (1일 10회 이상 운행)</p>
+                            <p><strong>춘천시외버스터미널 ↔ 양구</strong><br>소요시간: 약 1시간 (1일 15회 이상 운행)</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-train"></i></div>
+                        <div>
+                            <h3>ITX-청춘 / 전철 이용</h3>
+                            <p>용산역/청량리역 ↔ 춘천역 하차 후<br>춘천역 앞 정류장에서 양구행 시외버스 환승</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-car"></i></div>
+                        <div>
+                            <h3>자가용 이용</h3>
+                            <p><strong>서울 출발:</strong> 서울양양고속도로 → 춘천JC → 46번 국도(배후령터널) → 양구 (약 1시간 40분)</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h3>양구군청 주소</h3>
+                            <p>강원특별자치도 양구군 양구읍 관공서로 38 (우)24322<br>대표전화: 033-480-2114</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-taxi"></i></div>
+                        <div>
+                            <h3>관내 이동 및 택시안내</h3>
+                            <p><strong>농어촌 버스:</strong> 터미널에서 각 관광지 운행 (자세한 시간표는 터미널 홈페이지 확인)<br>
+                                <strong>양구 콜택시:</strong> 033-481-2222 (관광지 간 이동 시 편리합니다)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <h3>청춘<span>양구</span></h3>
+                <p>강원특별자치도 양구군 문화관광</p>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#location">찾아오시는길</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <p><i class="fas fa-phone-alt"></i> 관광안내: 033-480-2222</p>
+                <p><i class="fas fa-map-marker-alt"></i> 강원특별자치도 양구군 양구읍 관공서로 38</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Yanggu-Gun. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" class="chatbot-widget">
+        <!-- Chatbot Window (Hidden initially) -->
+        <div id="chat-window" class="chat-window">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <img src="배꼬비.png" alt="배꼽이">
+                    <div>
+                        <h4>양구 마스코트 배꼬비</h4>
+                        <p>무엇이든 물어보세요!</p>
+                    </div>
+                </div>
+                <button class="close-chat" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be injected here -->
+            </div>
+            <div class="chat-options" id="chat-options">
+                <!-- Options will be injected here -->
+            </div>
+        </div>
+
+        <!-- Floating Button -->
+        <div class="chat-launcher" onclick="toggleChat()">
+            <div class="speech-bubble" id="greeting-bubble">
+                내가 양구에 대해 소개해줄게! <i class="fas fa-hand-pointer"></i>
+            </div>
+            <div class="mascot-avatar">
+                <img src="배꼬비.png" alt="배꼽이">
+            </div>
+        </div>
+    </div>
+
+    <!-- Fortune Cookie Widget -->
+    <div id="fortune-cookie" class="fortune-cookie" onclick="openFortune()">
+        <img src="images/fortune_cookie.png" alt="포춘쿠키">
+    </div>
+
+    <!-- Fortune Modal -->
+    <div id="fortune-modal" class="fortune-modal">
+        <div class="fortune-content">
+            <span class="close-fortune" onclick="closeFortune()">&times;</span>
+            <h3>✨ 오늘의 양구 행운말 ✨</h3>
+            <p id="fortune-text">여기에 행운의 메시지가 표시됩니다.</p>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Header Scroll Effect
+    const header = document.getElementById('header');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+
+    // Close mobile menu when clicking a link
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+
+    // Intersection Observer for Scroll Animations
+    const animationElements = document.querySelectorAll('.fade-in, .fade-in-up, .slide-in-left, .slide-in-right, .slide-in-bottom');
+
+    // Check if initial viewport elements are visible before scroll
+    const checkInitialVisibility = () => {
+        animationElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight) {
+                el.classList.add('appear');
+            }
+        });
+    };
+
+    const appearOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            } else {
+                entry.target.classList.add('appear');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, appearOptions);
+
+    animationElements.forEach(el => {
+        appearOnScroll.observe(el);
+    });
+
+    // Trigger initial check
+    setTimeout(checkInitialVisibility, 100);
+
+    // Smooth Scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                const headerOffset = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+});
+
+// Toggle Section Function
+window.toggleSection = function (contentId, btn) {
+    const content = document.getElementById(contentId);
+    btn.classList.toggle('active');
+    content.classList.toggle('open');
+};
+
+// Chatbot Logic
+const chatWindow = document.getElementById('chat-window');
+const greetingBubble = document.getElementById('greeting-bubble');
+const chatMessages = document.getElementById('chat-messages');
+const chatOptions = document.getElementById('chat-options');
+let isChatOpen = false;
+
+window.toggleChat = function () {
+    isChatOpen = !isChatOpen;
+    if (isChatOpen) {
+        chatWindow.classList.add('active');
+        greetingBubble.style.display = 'none';
+        if (chatMessages.children.length === 0) {
+            initChat();
+        }
+    } else {
+        chatWindow.classList.remove('active');
+    }
+};
+
+const chatData = {
+    'greeting': {
+        text: '안녕! 나는 양구군 마스코트 배꼬비야. 국토의 정중앙 양구에 대해 무엇이 궁금해?',
+        options: [
+            { label: '지역', target: 'region' },
+            { label: '관광', target: 'tourism' },
+            { label: '음식점', target: 'food' },
+            { label: '갈만한 곳', target: 'places' }
+        ]
+    },
+    'region': {
+        text: '양구는 대한민국 국토의 정중앙에 위치한 맑고 깨끗한 생태도시야. 때묻지 않은 자연과 역사, 문화가 살아 숨쉬는 곳이지! 🌲',
+        options: [
+            { label: '관광', target: 'tourism' },
+            { label: '처음으로', target: 'greeting' }
+        ]
+    },
+    'tourism': {
+        text: '양구에는 아름다운 두타연, 신비로운 해안분지(펀치볼), 그리고 한반도 모양의 한반도섬 등 멋진 관광지가 정말 많아! ⛰️',
+        options: [
+            { label: '음식점', target: 'food' },
+            { label: '처음으로', target: 'greeting' }
+        ]
+    },
+    'food': {
+        text: '금강산도 식후경! 양구에는 18곳의 안심하고 즐길 수 있는 모범음식점이 지정되어 있어. 하단의 음식점 메뉴에서 삼계탕, 막국수 등을 확인해봐! 🍲',
+        options: [
+            { label: '갈만한 곳', target: 'places' },
+            { label: '처음으로', target: 'greeting' }
+        ]
+    },
+    'places': {
+        text: '가족, 연인과 함께라면 양구수목원, 박수근미술관, 국토정중앙천문대를 강력 추천해! 자연 속에서 힐링하고 별도 볼 수 있는 낭만적인 곳이야 ✨',
+        options: [
+            { label: '처음으로', target: 'greeting' }
+        ]
+    }
+};
+
+function addMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `message ${sender}`;
+    msgDiv.innerHTML = text;
+    chatMessages.appendChild(msgDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function renderOptions(options) {
+    chatOptions.innerHTML = '';
+    options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'chat-option-btn';
+        btn.textContent = opt.label;
+        btn.onclick = () => {
+            addMessage(opt.label, 'user');
+            chatOptions.innerHTML = ''; // Clear options while typing
+            setTimeout(() => {
+                handleBotResponse(opt.target);
+            }, 500); // Simulate network delay
+        };
+        chatOptions.appendChild(btn);
+    });
+}
+
+function handleBotResponse(targetId) {
+    const data = chatData[targetId];
+    if (data) {
+        addMessage(data.text, 'bot');
+        renderOptions(data.options);
+    }
+}
+
+function initChat() {
+    setTimeout(() => {
+        handleBotResponse('greeting');
+    }, 300);
+}
+
+// Weather API Integration (Open-Meteo for Yanggu)
+async function fetchWeather() {
+    const weatherWidget = document.getElementById('weather-widget');
+    if (!weatherWidget) return;
+    
+    try {
+        // Yanggu coordinates: 38.1066, 127.9868
+        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=38.1066&longitude=127.9868&current_weather=true');
+        const data = await response.json();
+        
+        if (data && data.current_weather) {
+            const temp = Math.round(data.current_weather.temperature);
+            let icon = 'fa-sun';
+            // Simple logic for icon based on weathercode
+            const code = data.current_weather.weathercode;
+            if (code >= 1 && code <= 3) icon = 'fa-cloud-sun';
+            if (code >= 45 && code <= 48) icon = 'fa-smog';
+            if (code >= 51 && code <= 67) icon = 'fa-cloud-rain';
+            if (code >= 71 && code <= 77) icon = 'fa-snowflake';
+            
+            weatherWidget.innerHTML = `<i class="fas ${icon}"></i> 양구 ${temp}°C`;
+        }
+    } catch (error) {
+        console.error('Failed to fetch weather:', error);
+        weatherWidget.innerHTML = `<i class="fas fa-cloud"></i> 양구 날씨`;
+    }
+}
+
+// Initialize Weather
+fetchWeather();
+
+// Google Translate Initialization
+window.googleTranslateElementInit = function() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'ko',
+        includedLanguages: 'en,ja,zh-CN,zh-TW',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+    }, 'google_translate_element');
+};
+
+// Fortune Cookie Logic
+const fortunes = [
+    "오늘 당신의 하루는 두타연의 맑은 계곡물처럼 투명하고 시원하게 풀릴 것입니다!",
+    "펀치볼처럼 둥글고 넉넉한 마음을 가지면 뜻밖의 행운이 찾아옵니다.",
+    "한반도의 정중앙 양구의 기운을 받아, 오늘 당신이 세상의 중심이 될 것입니다!",
+    "박수근 화백의 그림처럼 소박하지만 따뜻하고 아름다운 인연을 만나게 될 징조입니다.",
+    "국토정중앙천문대에서 쏟아지는 별빛처럼, 오늘은 반짝이는 아이디어가 떠오를 거예요.",
+    "청춘 양구의 이름처럼, 오늘 하루 젊고 활기찬 에너지가 당신을 가득 채울 것입니다."
+];
+
+const fortuneCookie = document.getElementById('fortune-cookie');
+const fortuneModal = document.getElementById('fortune-modal');
+const fortuneText = document.getElementById('fortune-text');
+
+// Randomly spawn the cookie
+function scheduleCookieSpawn() {
+    // Spawn randomly between 10s and 25s
+    const randomTime = Math.floor(Math.random() * 15000) + 10000;
+    setTimeout(() => {
+        if (fortuneCookie && !fortuneCookie.classList.contains('show')) {
+            // Random horizontal position (left or right side)
+            const isLeft = Math.random() > 0.5;
+            fortuneCookie.style.left = isLeft ? '30px' : 'auto';
+            fortuneCookie.style.right = isLeft ? 'auto' : '30px';
+            fortuneCookie.classList.add('show');
+            
+            // Hide after 7 seconds if not clicked
+            setTimeout(() => {
+                if (fortuneCookie.classList.contains('show')) {
+                    fortuneCookie.classList.remove('show');
+                    scheduleCookieSpawn(); // Schedule next spawn
+                }
+            }, 7000);
+        }
+    }, randomTime);
+}
+
+// Start the spawning cycle
+if (fortuneCookie && fortuneModal) {
+    scheduleCookieSpawn();
+}
+
+window.openFortune = function() {
+    // Hide cookie
+    fortuneCookie.classList.remove('show');
+    
+    // Pick random fortune
+    const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+    fortuneText.innerText = randomFortune;
+    
+    // Show modal
+    fortuneModal.classList.add('active');
+};
+
+window.closeFortune = function() {
+    fortuneModal.classList.remove('active');
+    // Schedule next spawn after closing
+    scheduleCookieSpawn();
+};
+
+// Close modal when clicking outside
+window.addEventListener('click', (e) => {
+    if (e.target === fortuneModal) {
+        closeFortune();
+    }
+});
+
+</script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>
