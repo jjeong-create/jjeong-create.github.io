@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 time: timeString
             };
 
-            emailjs.send('service_jjeong', 'template_2v7qgmc', templateParams)
+            emailjs.send('service_jjeong', 'template_3buaymh', templateParams)
                 .then(function(response) {
                     alert('성공적으로 메시지가 전송되었습니다! 빠른 시일 내에 답변해 드리겠습니다.');
                     contactForm.reset();
