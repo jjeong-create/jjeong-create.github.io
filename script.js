@@ -312,3 +312,26 @@ window.addEventListener('click', (e) => {
         closeFortune();
     }
 });
+
+// Switch Gomchwi Image function for premium gallery
+window.switchGomchwiImage = function (imgSrc, altText, thumbEl) {
+    const mainImg = document.getElementById('gomchwi-main-img');
+    const badge = document.getElementById('gomchwi-badge');
+    if (mainImg) {
+        mainImg.classList.add('fade-out-temp'); // smooth transition
+        setTimeout(() => {
+            mainImg.src = imgSrc;
+            mainImg.alt = altText;
+            if (badge) {
+                badge.textContent = altText;
+            }
+            mainImg.classList.remove('fade-out-temp');
+        }, 150);
+    }
+    
+    // Switch active thumbnail class
+    const thumbs = document.querySelectorAll('.thumb-item');
+    thumbs.forEach(t => t.classList.remove('active'));
+    thumbEl.classList.add('active');
+};
+
