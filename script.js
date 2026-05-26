@@ -98,6 +98,59 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // EmailJS Contact Form Integration
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = document.getElementById('btn-text');
+    const btnLoader = document.getElementById('btn-loader');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loader
+            if (btnText && btnLoader && submitBtn) {
+                btnText.style.display = 'none';
+                btnLoader.style.display = 'inline-block';
+                submitBtn.disabled = true;
+            }
+            
+            // Format current date and time
+            const now = new Date();
+            const timeString = now.getFullYear() + '-' + 
+                               String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                               String(now.getDate()).padStart(2, '0') + ' ' + 
+                               String(now.getHours()).padStart(2, '0') + ':' + 
+                               String(now.getMinutes()).padStart(2, '0') + ':' + 
+                               String(now.getSeconds()).padStart(2, '0');
+
+            // Send via emailjs
+            const templateParams = {
+                title: document.getElementById('contact-title').value,
+                name: document.getElementById('contact-name').value,
+                email: document.getElementById('contact-email').value,
+                message: document.getElementById('contact-message').value,
+                time: timeString
+            };
+
+            emailjs.send('service_jjeong', 'template_2v7qgmc', templateParams)
+                .then(function(response) {
+                    alert('성공적으로 메시지가 전송되었습니다! 빠른 시일 내에 답변해 드리겠습니다.');
+                    contactForm.reset();
+                }, function(error) {
+                    alert('메시지 전송에 실패했습니다. 잠시 후 다시 시도해 주세요: ' + JSON.stringify(error));
+                })
+                .finally(function() {
+                    // Hide loader
+                    if (btnText && btnLoader && submitBtn) {
+                        btnText.style.display = 'inline-block';
+                        btnLoader.style.display = 'none';
+                        submitBtn.disabled = false;
+                    }
+                });
+        });
+    }
 });
 
 // Toggle Section Function
