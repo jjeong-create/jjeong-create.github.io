@@ -151,6 +151,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
     }
+
+    // Show Startup Notice Modal automatically
+    const noticeModal = document.getElementById('notice-modal');
+    if (noticeModal) {
+        setTimeout(() => {
+            noticeModal.classList.add('active');
+        }, 500);
+    }
 });
 
 // Toggle Section Function
@@ -386,5 +394,13 @@ window.switchGomchwiImage = function (imgSrc, altText, thumbEl) {
     const thumbs = document.querySelectorAll('.thumb-item');
     thumbs.forEach(t => t.classList.remove('active'));
     thumbEl.classList.add('active');
+};
+
+// Close Startup Notice Modal function
+window.closeNotice = function() {
+    const noticeModal = document.getElementById('notice-modal');
+    if (noticeModal) {
+        noticeModal.classList.remove('active');
+    }
 };
 
